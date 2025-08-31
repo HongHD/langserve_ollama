@@ -72,6 +72,27 @@ SYSTEM """A chat between a curious user and an artificial intelligence assistant
 PARAMETER stop <s>
 PARAMETER stop </s>
 ```
+######################################################################################
+
+FROM ./ggml-model-Q5_K_M.gguf # 다운 받은 gguf파일의 경로로 코드 수정이 필요합니다.
+
+TEMPLATE """{{- if .System }}
+<s>{{ .System }}</s>
+{{- end }}
+<s>Human:
+{{ .Prompt }}</s>
+<s>Assistant:
+"""
+
+SYSTEM """A chat between a curious user and an artificial intelligence assistant. 
+The assistant gives helpful, detailed, and polite answers to the user's questions.
+모든 대답은 한국어로해"""
+
+PARAMETER stop <s>
+PARAMETER stop </s
+
+######################################################################################
+
 
 > openbuddy-llama2-13b 예시
 ```
